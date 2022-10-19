@@ -5,12 +5,9 @@
 package com.example.AdmCR.Entities;
 
 import java.io.Serializable;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import java.util.List;
+import javax.persistence.*;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -31,13 +28,19 @@ public class Apartamentos implements Serializable{
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="idApto")
+    @Column(name="idApto", nullable = false)
     private Integer idApto;
     
-    @Column(name="no_Apto")
+    @Column(name="no_Apto", nullable = false)
     private String no_Apto; 
     
-    @Column(name="no_Torre")
-    private String no_Torre;    
+    @Column(name="no_Torre", nullable = false)
+    private String no_Torre;
+
+    @OneToMany(mappedBy = "apartamentos", cascade = CascadeType.ALL)
+    private List<Pagos> pagos;
+
+/*    @OneToMany(mappedBy = "apartamentos", cascade = CascadeType.ALL)
+    private List<Usuarios> usuarios;*/
     
 }
