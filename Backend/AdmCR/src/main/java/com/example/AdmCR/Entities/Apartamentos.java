@@ -28,7 +28,6 @@ public class Apartamentos implements Serializable{
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="idApto", nullable = false)
     private Integer idApto;
     
     @Column(name="no_Apto", nullable = false)
