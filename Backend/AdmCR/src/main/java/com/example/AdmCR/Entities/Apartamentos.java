@@ -28,6 +28,7 @@ public class Apartamentos implements Serializable{
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name ="idApto")
     private Integer idApto;
     
     @Column(name="no_Apto", nullable = false)

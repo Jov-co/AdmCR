@@ -26,7 +26,7 @@ import lombok.Setter;
 public class Usuarios implements Serializable{
 
     @Id
-    @Column(name = "idUsuario", nullable = false)
+    @Column(name = "idUsuario")
     private String idUsuario;
 
     @Column ( name = "nombre", nullable = false)
@@ -42,7 +42,7 @@ public class Usuarios implements Serializable{
     private String email;
 
     @ManyToOne
-    @JoinColumn(name="fk_ref_apto", nullable = false)
+    @JoinColumn(name="fk_ref_apartamento", nullable = false)
     private Apartamentos apartamentos;
 
 

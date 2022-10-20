@@ -17,6 +17,7 @@ public class Pagos implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name ="idPagos")
     private Integer idPagos;
 
     @Column(name="fecha", nullable = false)
