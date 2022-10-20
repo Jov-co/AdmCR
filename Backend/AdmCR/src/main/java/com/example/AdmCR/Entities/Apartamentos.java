@@ -39,7 +39,7 @@ public class Apartamentos implements Serializable{
     @OneToMany(mappedBy = "apartamentos", cascade = CascadeType.ALL)
     private List<Pagos> pagos;
 
-/*    @OneToMany(mappedBy = "apartamentos", cascade = CascadeType.ALL)
-    private List<Usuarios> usuarios;*/
+    @OneToMany(mappedBy = "apartamentos", cascade = CascadeType.ALL)
+    private List<Usuarios> usuarios;
     
 }
