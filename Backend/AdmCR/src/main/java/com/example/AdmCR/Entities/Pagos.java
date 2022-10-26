@@ -30,6 +30,6 @@ public class Pagos implements Serializable {
     private Double valor;
 
     @ManyToOne
-    @JoinColumn(name="fk_ref_apto", nullable = false)
+    @JoinColumn(name="ref_apto", nullable = false)
     private Apartamentos apartamentos;
 }

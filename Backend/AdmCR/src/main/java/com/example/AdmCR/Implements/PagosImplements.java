@@ -32,11 +32,13 @@ public class PagosImplements implements PagosServices {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Pagos findById(Integer id) {
         return pagosRepository.findById(id).orElse(null);
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<Pagos> findAll() {
         return pagosRepository.findAll();
     }

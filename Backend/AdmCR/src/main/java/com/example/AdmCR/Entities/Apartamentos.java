@@ -28,7 +28,7 @@ public class Apartamentos implements Serializable{
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name ="idApto")
+    @Column(name ="id_apto")
     private Integer idApto;
     
     @Column(name="no_Apto", nullable = false)
@@ -37,10 +37,10 @@ public class Apartamentos implements Serializable{
     @Column(name="no_Torre", nullable = false)
     private String no_Torre;
 
-    @OneToMany(mappedBy = "apartamentos", cascade = CascadeType.ALL)
+    /*@OneToMany(mappedBy = "apartamentos", cascade = CascadeType.ALL)
     private List<Pagos> pagos;
 
     @OneToMany(mappedBy = "apartamentos", cascade = CascadeType.ALL)
-    private List<Usuarios> usuarios;
+    private List<Usuarios> usuarios;*/
     
 }

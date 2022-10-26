@@ -32,13 +32,13 @@ public class UsuariosImplements implements UsuariosServices {
     }
 
     @Override
-    @Transactional(readOnly = false)
+    @Transactional(readOnly = true)
     public Usuarios findById(String id) {
         return usuariosRepository.findById(id).orElse(null);
     }
 
     @Override
-    @Transactional(readOnly = false)
+    @Transactional(readOnly = true)
     public List<Usuarios> findAll() {
         return usuariosRepository.findAll();
     }

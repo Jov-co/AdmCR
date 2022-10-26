@@ -42,7 +42,7 @@ public class Usuarios implements Serializable{
     private String email;
 
     @ManyToOne
-    @JoinColumn(name="fk_ref_apartamento", nullable = false)
+    @JoinColumn(name="ref_apartamento", nullable = false)
     private Apartamentos apartamentos;
 
 
