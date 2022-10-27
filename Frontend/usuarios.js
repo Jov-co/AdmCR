@@ -36,7 +36,9 @@ function loadUsuario(idUsuario){
     let tipoA = document.getElementById('tipo-apellido')
     let tipoT = document.getElementById('tipo-telefono')
     let tipoemail = document.getElementById('tipo-email')
-    let tipoapto = document.getElementById('tipo-apartamento')
+    let tipoIdApto = document.getElementById('tipo-id-apartamento')
+    let tipoNumApto = document.getElementById('tipo-num-apartamento')
+    let tipoTorreApto = document.getElementById('tipo-torre-apartamento')
     let id = document.getElementById('usuario-id')
     request.onload = function(){
         let data = request.response
@@ -45,7 +47,9 @@ function loadUsuario(idUsuario){
         tipoA.value = data.apellidos
         tipoT.value = data.telefono
         tipoemail.value = data.email
-        tipoapto.value = data.apartamentos.idApto
+        tipoIdApto.value = data.apartamentos.idApto
+        tipoNumApto.value = data.apartamentos.no_Apto
+        tipoTorreApto.value = data.apartamentos.no_Torre
     }
     request.onerror = function(){
         alert("Error al recuperar los datos.");
@@ -62,11 +66,21 @@ function saveUsuario(){
     let tipoA = document.getElementById('tipo-apellido').value
     let tipoT = document.getElementById('tipo-telefono').value
     let tipoemail = document.getElementById('tipo-email').value
-    let tipoApto = document.getElementById('tipo-apartamento').value
+    let tipoNumApto = document.getElementById('tipo-num-apartamento').value
+    let tipoTorreApto = document.getElementById('tipo-torre-apartamento').value
     let id = document.getElementById('usuario-id').value
-    let data = {'idUsuario': id,'nombre': tipoN, 'apellidos': tipoA, 'telefono':tipoT,
-    'email':tipoemail, 'apartamentos':tipoApto  }
-    let request = sendRequest('usuario/', id ? 'POST' : 'PUT', data)
+    let data = {
+        'idUsuario': id,
+        'nombre': tipoN, 
+        'apellidos': tipoA, 
+        'telefono':tipoT,    
+        'email':tipoemail, 
+        'apartamentos':{
+            "no_Apto": tipoNumApto, 
+            "no_Torre": tipoTorreApto
+        }
+    }
+    let request = sendRequest('usuario/post','POST', data)
     request.onload = function(){
         window.location = 'usuarios.html';
     }
@@ -79,11 +93,23 @@ function editarUsuario(){
     let tipoA = document.getElementById('tipo-apellido').value
     let tipoT = document.getElementById('tipo-telefono').value
     let tipoemail = document.getElementById('tipo-email').value
-    let tipoApto = document.getElementById('tipo-apartamento').value
+    let tipoIdApto = document.getElementById('tipo-id-apartamento').value
+    let tipoNumApto = document.getElementById('tipo-num-apartamento').value
+    let tipoTorreApto = document.getElementById('tipo-torre-apartamento').value
     let id = document.getElementById('usuario-id').value
-    let data = {'idUsuario': id,'nombre': tipoN, 'apellidos': tipoA, 'telefono':tipoT,
-    'email':tipoemail, 'apartamentos':tipoApto  }
-    let request = sendRequest('usuario/', id ? 'PUT' : 'POST', data)
+    let data = {
+        'idUsuario': id,
+        'nombre': tipoN, 
+        'apellidos': tipoA, 
+        'telefono':tipoT,    
+        'email':tipoemail, 
+        'apartamentos':{
+            'idApto': tipoIdApto, 
+            "no_Apto": tipoNumApto, 
+            "no_Torre": tipoTorreApto
+        }
+    }
+    let request = sendRequest('usuario/edit', id ? 'PUT' : 'POST', data)
     request.onload = function(){
         window.location = 'usuarios.html';
     }

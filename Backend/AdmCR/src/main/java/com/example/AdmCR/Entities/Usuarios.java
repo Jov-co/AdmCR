@@ -1,5 +1,6 @@
 package com.example.AdmCR.Entities;
 import java.io.Serializable;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -41,8 +42,8 @@ public class Usuarios implements Serializable{
     @Column (name = "email", nullable = false)
     private String email;
 
-    @ManyToOne
-    @JoinColumn(name="ref_apartamento", nullable = false)
+    @ManyToOne(targetEntity = Apartamentos.class, cascade = CascadeType.ALL)
+    @JoinColumn(name="ref_apartamento",referencedColumnName = "id_apto" , nullable = false)
     private Apartamentos apartamentos;
 
 

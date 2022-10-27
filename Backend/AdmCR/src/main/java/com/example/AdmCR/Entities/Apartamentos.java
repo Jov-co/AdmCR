@@ -27,7 +27,6 @@ import lombok.Setter;
 public class Apartamentos implements Serializable{
     
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name ="id_apto")
     private Integer idApto;
     

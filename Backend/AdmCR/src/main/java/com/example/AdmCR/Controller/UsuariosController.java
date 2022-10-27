@@ -1,9 +1,12 @@
 
 package com.example.AdmCR.Controller;
 
+import com.example.AdmCR.Entities.Apartamentos;
 import com.example.AdmCR.Entities.Usuarios;
+import com.example.AdmCR.Services.ApartamentosServices;
 import com.example.AdmCR.Services.UsuariosServices;
 import java.util.List;
+import javax.persistence.EntityManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -27,10 +30,15 @@ public class UsuariosController {
 
     @Autowired
     private UsuariosServices usuariosServices;
+    @Autowired
+    private ApartamentosServices apartamentosServices;
 
     @PostMapping(value = "/post")
-
     public ResponseEntity<Usuarios> agregar(@RequestBody Usuarios usuarios) {
+        Apartamentos apt = usuarios.getApartamentos();
+        apt.setIdApto(Integer.valueOf(apt.getNo_Apto() + apt.getNo_Torre()));
+        usuarios.setApartamentos(apt);
+        apartamentosServices.save(apt);
         Usuarios obj = usuariosServices.save(usuarios);
         if (obj != null) {
             return ResponseEntity.ok(obj);
@@ -60,6 +68,7 @@ public class UsuariosController {
             obj.setApellidos(usuarios.getApellidos());
             obj.setTelefono(usuarios.getTelefono());
             obj.setEmail(usuarios.getEmail());
+            obj.setApartamentos(usuarios.getApartamentos());
 
             usuariosServices.save(obj);
         } else {
