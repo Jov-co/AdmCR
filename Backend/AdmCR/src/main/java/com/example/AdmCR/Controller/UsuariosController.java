@@ -6,7 +6,6 @@ import com.example.AdmCR.Entities.Usuarios;
 import com.example.AdmCR.Services.ApartamentosServices;
 import com.example.AdmCR.Services.UsuariosServices;
 import java.util.List;
-import javax.persistence.EntityManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;

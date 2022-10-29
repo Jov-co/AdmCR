@@ -56,7 +56,7 @@ function loadUsuario(idUsuario){
     }
 }
 function deleteUsuario(idUsuario){
-    let request = sendRequest('usuario/'+idUsuario, 'DELETE', '')
+    let request = sendRequest('usuario/delete/'+idUsuario, 'DELETE', '')
     request.onload = function(){
         loadData()
     }

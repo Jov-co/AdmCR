@@ -29,7 +29,7 @@ public class Pagos implements Serializable {
     @Column(name="valor", nullable = false)
     private Double valor;
 
-    @ManyToOne
-    @JoinColumn(name="ref_apto", nullable = false)
+    @ManyToOne(targetEntity = Apartamentos.class, cascade = CascadeType.ALL)
+    @JoinColumn(name="ref_apto", referencedColumnName = "id_apto", nullable = false)
     private Apartamentos apartamentos;
 }
